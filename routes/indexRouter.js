@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { v4: uuid } = require('uuid');
+const controller = require("../controllers/indexController");
 
 const indexRouter = Router();
 
@@ -18,8 +19,8 @@ const messages = [
     }
 ];
 
-indexRouter.get("/", (req, res) => res.render("index", { title: "Mini Messageboard", messages: messages }));
-
+// indexRouter.get("/", (req, res) => res.render("index", { title: "Mini Messageboard", messages: messages }));
+indexRouter.get("/", controller.getMessages);
 indexRouter.get("/new", (req, res) => res.render("form"));
 indexRouter.post("/new", (req, res) => {
     const { messageText, messageUser } = req.body;

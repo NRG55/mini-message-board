@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('node:path');
 const app = express();
@@ -9,16 +10,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/", indexRouter);
-// const message = "test"
-// app.get("/", (req, res) => {
-//     res.render("index", { message });
-// });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (error) => {
     if (error) {
         throw error;
     };
-    console.log(`Express app is listening on port ${PORT}`);
+    console.log(`Express app is listening on port ${PORT}`);    
 });
